@@ -1,17 +1,13 @@
 pipeline {
- 
-  agent {
-    label 'presta_docker_slave'
-  }
- 
-  stages {
-
-    stage('Tests unitaires') {
-
-      steps {
-        sh 'composer install'
-        sh 'composer test-all'
-      }
+    agent {
+        docker { image 'ladynadoo/prestashop' }
     }
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'composer install -n'
+                sh 'composer test-all'
+            }
+        }
+    }
 }
