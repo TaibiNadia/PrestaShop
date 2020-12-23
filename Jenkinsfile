@@ -9,12 +9,11 @@ pipeline {
                 sh 'SYMFONY_DEPRECATIONS_HELPER=disabled composer unit-tests'
             }
         }
+        stage(‘Build’) {
+            steps {
+                sh 'docker-compose up --build'
+            }
+        } 
     }
-    stages {
-      stage(‘Build’) {
-        steps {
-          sh 'docker-compose up --build'
-        }
-      }
-    }
+     
 }
