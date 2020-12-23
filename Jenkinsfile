@@ -6,7 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'composer install -n'
-                sh 'composer unit-tests'
+                sh 'SYMFONY_DEPRECATIONS_HELPER=disabled composer unit-tests'
             }
         }
     }
