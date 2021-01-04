@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'master' } }
+    agent { node { label 'ubuntu_slave' } }
     
     stages {
         stage('Test') {
