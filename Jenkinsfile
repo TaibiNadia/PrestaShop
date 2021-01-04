@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'ladynadoo/prestashop' }
+        docker { image 'prestashop/prestashop' }
     }
     stages {
         stage('Test') {
@@ -10,8 +10,8 @@ pipeline {
             }
         }
         stage(‘Build’) {
-            steps {
-                sh '/usr/local/bin/docker-compose up --build'
+            steps { 
+                sh 'docker build -t buid .'
             }
         }
         
