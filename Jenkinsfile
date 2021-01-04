@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'prestashop/prestashop' }
-    }
+    
     stages {
         stage('Test') {
             steps {
