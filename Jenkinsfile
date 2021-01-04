@@ -2,7 +2,7 @@ pipeline {
     agent { node { label 'ubuntu_slave' } }
     
     stages {
-        stage('Test:unitaire') {
+        stage('Test_unitaire') {
             steps {
                 sh 'composer install -n'
                 sh 'SYMFONY_DEPRECATIONS_HELPER=disabled composer unit-tests'
@@ -13,7 +13,7 @@ pipeline {
                 sh 'docker build -t buid .'
             }
         }
-        stage(‘Test:fonctionnel’) {
+        stage(‘Test_fonctionnel’) {
             steps { 
                 sh 'docker-compose up -d'
                 sh 'docker-compose stop'
