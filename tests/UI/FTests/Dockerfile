@@ -22,7 +22,10 @@ RUN pip install --upgrade pip
 
 RUN pip install selenium==3.8.0
 
-#CMD ["python", "./app.py"]
-COPY docker_prestashop/wait-for-it.sh /tmp/
-COPY runTests.sh /tmp/
-COPY test/ /tmp/test/
+# Copy scripts wait-for-it and ftests
+COPY ["./.docker/prestashop/wait-for-it.sh", "./.docker/ftests.py", "/tmp/"]
+
+# 6. Create folder for tests and copy component
+RUN mkdir -p /tests/reports
+WORKDIR /tests/
+COPY ["./", "./"]
