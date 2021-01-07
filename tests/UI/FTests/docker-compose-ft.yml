@@ -13,8 +13,9 @@ services:
       HEADLESS: "true"
       DB_SERVER: "db"
     depends_on:
-      - "prestashop"
+      - "ps_build"
     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
+    command: [""]
     tty: true
     volumes:
       - .docker:/tmp/docker
