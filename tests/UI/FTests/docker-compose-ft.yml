@@ -6,8 +6,8 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     environment:
-      URL_FO: "http://prestashop-web/"
-      URL_BO: "http://prestashop-web/admin-dev/"
+      URL_FO: "http://10.10.20.71/"
+      URL_BO: "http://10.10.20.71/admin/"
       EMAIL: "demo@prestashop.com"
       PASSWD: "prestashop_demo"
       HEADLESS: "true"
