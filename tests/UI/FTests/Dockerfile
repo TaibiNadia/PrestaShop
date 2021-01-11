@@ -1,7 +1,7 @@
 FROM python:3.8
 
-COPY . /app
-WORKDIR /app
+#COPY . /app
+#WORKDIR /app
 
 RUN mkdir __logger
 
@@ -26,6 +26,6 @@ RUN pip install selenium==3.8.0
 COPY ["../.docker/prestashop/wait-for-it.sh", "./ftests.py", "/tmp/"]
 
 # 6. Create folder for tests and copy component
-RUN mkdir -p /tests/reports
-WORKDIR /tests/
+RUN mkdir -p /tests/UI/FTests/reports
+WORKDIR /tests/UI/FTests
 COPY ["./", "./"]
