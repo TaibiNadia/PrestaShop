@@ -15,7 +15,7 @@ services:
     depends_on:
       - "ps_build"
     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
-    command: ["python /tmp/ftests.py"]
+    command: ["python3 /tmp/ftests.py"]
     tty: true
     volumes:
       - .docker:/tmp/docker
