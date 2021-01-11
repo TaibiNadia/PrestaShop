@@ -19,6 +19,6 @@ services:
     tty: true
     volumes:
       - .docker:/tmp/docker
-      - ./reports:/tests/reports
+      - ./reports:/tests/UI/FTests/reports
     networks:
       - default
