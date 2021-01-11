@@ -18,30 +18,17 @@ class LoginTest(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.implicitly_wait(30)
 
-    def test_login (self):
-        psEmail = 'mm@gmail.com'
-        psPassword = 'MM@3841'
-        emailFieldName = 'email'
-        passFieldName = 'password'
-        loginButtonXpath = '//input[@value="my-account"]'
-        logoXpath = '//a[@rel="nofollow"]'
-        driver = self.driver
-
-        emailFieldElement = WebDriverWait(driver, 10).until(lambda driver:find_element_by_name(emaiFieldName))
-        passFieldElement = WebDriverWait(driver, 10).until(lambda driver:find_element_by_name(passFieldName))
-        loginButtonElement = WebDriverWait(driver, 10).until(lambda driver:find_element_by_xpath(logoXpath))
+    def test_login_valid (self):
+        self.driver.find_element_by_name("email").send_keys("mm@gmail.com")
+        self.driver.find_element_by_name("password").send_keys("MM@3841")
+        self.driver.find_element_by_id("submit-login").click()
+        self.driver.find_element_by_class_name("logout").click()
+        time.sleep(2)
         
-        emailFieldElement.clear()
-        emailFieldElement.send_keys(psEmail)
-        passFieldElement.clear()
-        passFieldElement.send_keys(psPassword)
-        loginButtonElement.click()
-
-        webDriverWait(driver, 10).until(lambda driver: driver.find_element_by_xpath())
-
     def tearDown(self):
         self.driver.quit()
-
+        print("Test completed")
+        
 if __name__== '__main__':
 
     unittest.main()
