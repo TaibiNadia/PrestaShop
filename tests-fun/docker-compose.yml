@@ -5,8 +5,8 @@ services:
   prestashop:
     image: ps_build
     build:
-      context: ./
-      dockerfile: ./.docker/prestashop/Dockerfile
+      context: ../
+      dockerfile: ../Dockerfile
     env_file:
       - .docker/prestashop/.env
     depends_on:
