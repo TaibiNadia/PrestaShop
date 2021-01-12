@@ -39,8 +39,8 @@ services:
       HEADLESS: "true"
       DB_SERVER: "db"
     depends_on:
-      - "ps_build"
-      - "mysql:5"
+      - "prestashop"
+      - "db"
     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
     command: ["python3 /tmp/ftests.py"]
     tty: true
