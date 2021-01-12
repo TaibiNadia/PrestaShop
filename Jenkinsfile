@@ -16,7 +16,7 @@ pipeline {
         stage(‘Test_fonctionnel’) {
             steps { 
                 sh 'docker-compose up -d'
-                sh 'docker-compose -f fun-tests/docker-compose.yml up'
+                sh 'fun-tests/docker-compose.yml up'
                 sh 'docker-compose stop'
             }
         }
