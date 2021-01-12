@@ -7,14 +7,8 @@ services:
     build:
       context: ../
       dockerfile: ../Dockerfile
-    env_file:
-      - .docker/prestashop/.env
     depends_on:
       - "db"
-    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "db:3306", "--", "/tmp/docker_run.sh"]
-    volumes:
-      - .docker:/tmp/docker
-      - ../../:/tmp/data-ps/prestashop/
     networks:
       default:
         aliases:
@@ -45,7 +39,6 @@ services:
     command: ["python3 funtest.py"]
     tty: true
     volumes:
-      - .docker:/tmp/docker
       - ./reports:/tests/reports
     networks:
       - default
