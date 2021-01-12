@@ -9,9 +9,8 @@ RUN apt-get -y update
 RUN apt-get install -y google-chrome-stable
 
 # install chromedriver
-RUN apt-get install -yqq unzip
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chrome
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+RUN curl https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip -o /usr/local/bin/chromedriver
+RUN chmod +x /usr/local/bin/chromedriver
 
 # set display port to avoid crash
 ENV DISPLAY=:99
@@ -22,9 +21,9 @@ RUN pip install --upgrade pip
 RUN pip install selenium==3.8.0
 
 # Copy scripts wait-for-it and ftests
-COPY ["../.docker/prestashop/wait-for-it.sh", "./ftests.py", "/tmp/"]
+#COPY ["../.docker/prestashop/wait-for-it.sh", "./ftests.py", "/tmp/"]
 
 # 6. Create folder for tests and copy component
-RUN mkdir -p /tests/UI/FTests/reports
-WORKDIR /tests/UI/FTests
+RUN mkdir -p /tests-fun/reports
+WORKDIR /tests-fun
 COPY ["./", "./"]
