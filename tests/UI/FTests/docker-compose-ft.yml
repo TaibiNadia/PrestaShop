@@ -1,8 +1,9 @@
 version: '3'
 
 services:
-  image: ps_build
+  
   prestashop:
+    image: ps_build
     build:
       context: ./
       dockerfile: ./.docker/prestashop/Dockerfile
