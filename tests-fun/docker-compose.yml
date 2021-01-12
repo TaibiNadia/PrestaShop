@@ -2,25 +2,6 @@ version: '3'
 
 services:
   
-  prestashop:
-    image: ps_build
-    build:
-      context: ../
-      dockerfile: ../Dockerfile
-    depends_on:
-      - "db"
-    networks:
-      default:
-        aliases:
-          - prestashop-web
-
-  db:
-    image: mysql:5
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    networks:
-      - default
-  
   tests:
     build:
       context: ./
@@ -33,8 +14,8 @@ services:
       HEADLESS: "true"
       DB_SERVER: "db"
     depends_on:
-      - "prestashop"
-      - "db"
+      - "prestashop-git"
+      - "mysql"
     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
     command: ["python3 funtest.py"]
     tty: true
