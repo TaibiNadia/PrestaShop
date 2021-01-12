@@ -42,10 +42,10 @@ services:
       - "prestashop"
       - "db"
     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
-    command: ["python3 /tmp/ftests.py"]
+    command: ["python3 funtest.py"]
     tty: true
     volumes:
       - .docker:/tmp/docker
-      - ./reports:/tests/UI/FTests/reports
+      - ./reports:/tests/reports
     networks:
       - default
