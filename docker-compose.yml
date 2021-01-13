@@ -44,7 +44,7 @@ services:
      depends_on:
       - "prestashop-git"
       - "mysql"
-     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
+     #command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
      command: ["python3 funtest.py"]
      tty: true
      volumes:
