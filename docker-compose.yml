@@ -45,7 +45,7 @@ services:
       - "prestashop-git"
       - "mysql"
      #command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
-     command: ["python3 funtest.py"]
+     command: ["python3 /tests-fun/funtest.py"]
      tty: true
      volumes:
       - ./reports:/tests/reports
