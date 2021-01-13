@@ -9,8 +9,8 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 
 class LoginTest(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
+    
+    def setUp(self):
         opts = ChromeOptions()
         opts.add_argument('--headless')
         opts.add_argument('--no-sandbox')
@@ -43,8 +43,8 @@ class LoginTest(unittest.TestCase):
         for article in results:
             print(article.text)
             print()
-    @classmethod
-    def tearDownClass(self):
+    
+    def tearDown(self):
         self.driver.quit()
         print("Test completed")
 
