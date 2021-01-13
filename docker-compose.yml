@@ -32,8 +32,8 @@ services:
   tests:
      image: ps_test
      build:
-      context: .
-      dockerfile: tests-fun\Dockerfile
+      context: ./
+      dockerfile: ./tests-fun/Dockerfile
      environment:
       URL_FO: "http://10.10.20.71/"
       URL_BO: "http://10.10.20.71/admin/"
