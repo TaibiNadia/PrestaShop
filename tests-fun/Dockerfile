@@ -26,4 +26,4 @@ RUN pip install selenium==3.8.0
 # 6. Create folder for tests and copy component
 RUN mkdir -p /tests-fun/reports
 WORKDIR /tests-fun
-COPY ["./", "./"]
+#COPY ["./", "./"]
