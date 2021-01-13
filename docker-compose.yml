@@ -31,5 +31,22 @@ services:
   
   tests:
      image: ps_test
-     build: 
-     
+     build:
+      context: ./tests-fun
+      dockerfile: ./tests-fun/Dockerfile
+    environment:
+      URL_FO: "http://10.10.20.71/"
+      URL_BO: "http://10.10.20.71/admin/"
+      EMAIL: "demo@prestashop.com"
+      PASSWD: "prestashop_demo"
+      HEADLESS: "true"
+      DB_SERVER: "db"
+    depends_on:
+      - "prestashop-git"
+      - "mysql"
+    command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
+    command: ["python3 funtest.py"]
+    tty: true
+    volumes:
+      - ./reports:/tests/reports
+         
