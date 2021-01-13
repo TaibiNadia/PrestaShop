@@ -21,9 +21,10 @@ RUN pip install --upgrade pip
 RUN pip install selenium==3.8.0
 
 # Copy scripts ftests
-COPY ["../tests-fun/ftests.py", "/tests-fun/"]
+COPY ["./tests-fun/ftests.py", "/tests-fun/"]
 
 # 6. Create folder for tests and copy component
-RUN mkdir -p /tests-fun/reports
+RUN mkdir  /tests-fun/reports
+
 WORKDIR /tests-fun
 #COPY ["./", "./"]
