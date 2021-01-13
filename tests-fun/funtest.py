@@ -30,7 +30,7 @@ class LoginTest(unittest.TestCase):
         self.driver.find_element_by_class_name("logout").click()
         time.sleep(2)
         
-	  def test_search_page (self):
+    def test_search_page (self):
         #wait = WebDriverWait(self.driver, 10)
         search_query = "mug"
         self.driver.get("http://10.10.20.71/")
