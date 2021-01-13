@@ -29,20 +29,20 @@ class LoginTest(unittest.TestCase):
         self.driver.find_element_by_id("submit-login").click()
         self.driver.find_element_by_class_name("logout").click()
         time.sleep(2)
-		
-	def test_search_page (self):
-#               wait = WebDriverWait(self.driver, 10)
-               search_query = "mug"
-               self.driver.get("http://10.10.20.71/")
-               self.driver.find_element_by_name("s").send_keys(search_query)
-               self.driver.find_element_by_class_name("material-icons").click()
-#               wait.until(presence_of_element_located((By.ID, "js-product-list")))
-               self.driver.find_elements_by_id("js-product-list")
-               #results
-               results = self.driver.find_elements_by_class_name("product-miniature")
-               for article in results:
-                   print(article.text)
-                   print()
+        
+	  def test_search_page (self):
+        #wait = WebDriverWait(self.driver, 10)
+        search_query = "mug"
+        self.driver.get("http://10.10.20.71/")
+        self.driver.find_element_by_name("s").send_keys(search_query)
+        self.driver.find_element_by_class_name("material-icons").click()
+        #wait.until(presence_of_element_located((By.ID, "js-product-list")))
+        self.driver.find_elements_by_id("js-product-list")
+        #results
+        results = self.driver.find_elements_by_class_name("product-miniature")
+        for article in results:
+            print(article.text)
+            print()
     @classmethod
     def tearDownClass(self):
         self.driver.quit()
