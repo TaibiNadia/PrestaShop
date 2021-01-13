@@ -24,7 +24,7 @@ RUN pip install selenium==3.8.0
 RUN mkdir -p /tests-fun/reports
 
 # Copy scripts ftests
-COPY ./tests-fun/funtests.py /tests-fun
+COPY ./tests-fun/funtest.py /tests-fun
 
 WORKDIR /tests-fun
 #COPY ["./", "./"]
