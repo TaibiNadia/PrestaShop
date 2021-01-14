@@ -20,13 +20,20 @@ pipeline {
                 sh 'docker-compose stop'
             }
         }
-        /* publish html */
-        publishHTML([allowMissing: false, 
+        stage('Publish_HTML') {
+            steps {
+         
+              /* Archive the built artifacts */
+              archive (includes: 'pkg/*.gem')
+              /* publish html */
+              publishHTML([allowMissing: false, 
                      alwaysLinkToLastBuild: false, 
                      keepAll: true, reportDir: 'coverage', 
                      reportFiles: 'index.html', 
                      reportName: 'HTML Report', reportTitles: ''])
-        
+           }
+        }
+              
     }
      
 }
