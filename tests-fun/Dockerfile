@@ -24,6 +24,6 @@ RUN mkdir -p /tests-fun/reports
 
 # Copy scripts ftests
 COPY ./tests-fun/funtest.py /tests-fun
+RUN chmod +rx /tests-fun
 
 WORKDIR /tests-fun
-#COPY ["./", "./"]
