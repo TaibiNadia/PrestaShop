@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get -y install \
     apt-utils \
     mailutils
-RUN apt-get install -y \
+RUN apt install -y \
     gnupg2 \
     curl \
     git \
