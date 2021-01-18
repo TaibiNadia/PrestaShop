@@ -23,7 +23,7 @@ class LoginTest(unittest.TestCase):
         self.driver.save_screenshot("toto.png")
 
     def test_login_valid (self):
-        self.driver.get("http://10.10.20.71/fr/connexion?back=my-account")
+        self.driver.get("http://prestashop-git/fr/connexion?back=my-account")
         self.driver.find_element_by_name("email").send_keys("mm@gmail.com")
         self.driver.find_element_by_name("password").send_keys("MM@3841")
         self.driver.find_element_by_id("submit-login").click()
@@ -33,7 +33,7 @@ class LoginTest(unittest.TestCase):
     def test_search_page (self):
         #wait = WebDriverWait(self.driver, 10)
         search_query = "mug"
-        self.driver.get("http://10.10.20.71/")
+        self.driver.get("http://prestashop-git/")
         self.driver.find_element_by_name("s").send_keys(search_query)
         self.driver.find_element_by_class_name("material-icons").click()
         #wait.until(presence_of_element_located((By.ID, "js-product-list")))
