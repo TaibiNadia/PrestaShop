@@ -5,7 +5,7 @@ WORKDIR /tmp
 # Install dependencies
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update 
-RUN apt-get install -y --no-install-recommends  \
+RUN apt-get -y install \
     apt-utils \
     mailutils
 RUN apt install -y \
