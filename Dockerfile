@@ -8,7 +8,7 @@ RUN apt-get update
 
 RUN apt-get install -y \
     mailutils \
-    gnupg \
+    gnupg2 \
     curl \
     git \
     software-properties-common \
