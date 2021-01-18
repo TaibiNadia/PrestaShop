@@ -10,7 +10,7 @@ RUN apt-get update
 #    mailutils
 RUN apt install -y \
     mailutils
-    gnupg2 \
+#    gnupg2 \
     curl \
     git \
     software-properties-common \
