@@ -6,16 +6,15 @@ WORKDIR /tmp
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
 
-RUN apt install -y \
+RUN apt-get install -y \
+    mailutils \
     gnupg2 \
     curl \
     git \
     software-properties-common \
     nodejs \
     poppler-utils
-RUN apt-get install -y  \
-    apt-utils \
-    mailutils    
+   
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
