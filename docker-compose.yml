@@ -14,6 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: prestashop
       MYSQL_DATABASE: prestashop
     restart: always
+
   prestashop-git:
     image: ps_build
     environment:
@@ -22,10 +23,10 @@ services:
       DB_PASSWD: ${DB_PASSWD:-prestashop}
       DB_NAME: ${DB_NAME:-prestashop}
       DB_SERVER: ${DB_SERVER:-mysql}
-      PS_DOMAIN: ${PS_DOMAIN:-localhost:8001}
+      PS_DOMAIN: ${PS_DOMAIN:-prestashop-git}
       PS_FOLDER_INSTALL: ${PS_FOLDER_INSTALL:-install-dev}
       PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN:-admin-dev}
-    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysql:3306", "--", "/tmp/docker_run_git.sh"]
+    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysql:3306", "--", "/tmp/docker_run.sh"]
     ports:
       - "8001:80"
   
@@ -34,19 +35,9 @@ services:
      build:
       context: ./
       dockerfile: ./tests-fun/Dockerfile
-     environment:
-      URL_FO: "http://10.10.20.71/"
-      URL_BO: "http://10.10.20.71/admin/"
-      EMAIL: "demo@prestashop.com"
-      PASSWD: "prestashop_demo"
-      HEADLESS: "true"
-      DB_SERVER: "db"
      depends_on:
       - "prestashop-git"
-      - "mysql"
-     #command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "prestashop-web:80", "--", "/bin/bash"]
-     command: ["python3 /tests-fun/funtest.py"]
+     command: ["/tmp/wait-for-it.sh", "--timeout=600", "--strict", "prestashop-git:80", "--", "/usr/local/bin/python funtest.py"]
      tty: true
      volumes:
       - ./reports:/tests/reports
-         

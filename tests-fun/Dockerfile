@@ -17,7 +17,7 @@ ENV DISPLAY=:99
 #install selenium
 RUN pip install --upgrade pip
 
-RUN pip install selenium==3.8.0
+RUN pip install selenium==3.141.0
 
 # 6. Create folder for tests and copy component
 RUN mkdir -p /tests-fun/reports
@@ -27,3 +27,4 @@ COPY ./tests-fun/funtest.py /tests-fun
 RUN chmod +rx /tests-fun
 
 WORKDIR /tests-fun
+COPY ["./tests/UI/.docker/prestashop/wait-for-it.sh", "/tmp/"]
