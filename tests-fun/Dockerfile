@@ -19,6 +19,8 @@ RUN pip install --upgrade pip
 
 RUN pip install selenium==3.141.0
 
+RUN pip install unittest-xml-reporting
+
 # 6. Create folder for tests and copy component
 RUN mkdir -p /tests-fun/reports
 
