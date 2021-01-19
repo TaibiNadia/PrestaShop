@@ -18,7 +18,7 @@ pipeline {
                 
                 sh 'docker-compose up -d --force-recreate' // Start ENV 
                 sh 'tests/UI/.docker/prestashop/wait-for-it.sh --timeout=600 --strict localhost:8001 -- docker-compose up tests' // Wait and launch test
-                sh 'docker-compose stop && docker-compose rm --force' // Clean ENV
+                /*sh 'docker-compose stop && docker-compose rm --force' // Clean ENV */
             }
         }
         
