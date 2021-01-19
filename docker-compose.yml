@@ -34,7 +34,7 @@ services:
      build:
       context: ./
       dockerfile: ./tests-fun/Dockerfile
-      depends_on:
+     depends_on:
       - "prestashop-git"
      command: ["/tmp/wait-for-it.sh", "--timeout=600", "--strict", "prestashop-git:80", "--", "/usr/local/bin/python funtest.py"]
      tty: true
