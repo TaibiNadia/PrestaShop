@@ -6,9 +6,11 @@ WORKDIR /tmp
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
 
-RUN apt-get install -y \
-    mailutils \
-    gpgv \
+RUN apt-get install -y  \
+    apt-utils \
+    mailutils
+RUN apt install -y \
+    gnupg2 \
     curl \
     git \
     software-properties-common \
