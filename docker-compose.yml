@@ -14,6 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: prestashop
       MYSQL_DATABASE: prestashop
     restart: always
+    
   prestashop-git:
     image: ps_build
     environment:
