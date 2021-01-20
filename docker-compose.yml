@@ -37,7 +37,7 @@ services:
       dockerfile: ./tests-fun/Dockerfile
      depends_on:
       - "prestashop-git"
-     command: ["/tmp/wait-for-it.sh", "--timeout=800", "--strict", "prestashop-git:80",  "/usr/local/bin/python funtest.py"]
+     command: ["/tmp/wait-for-it.sh", "--timeout=800", "--strict", "prestashop-git:80", "--", "/usr/local/bin/python funtest.py"]
      tty: true
      volumes:
       - ./reports:/tests/reports
