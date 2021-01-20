@@ -48,7 +48,7 @@ services:
      networks: 
         - prestashop2_default  
          
-  networks:
-     prestashop2_default:
-         driver: "bridge"
+networks:
+   prestashop2_default:
+      driver: "bridge"
      
