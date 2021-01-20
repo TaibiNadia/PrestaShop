@@ -15,9 +15,7 @@ services:
       MYSQL_DATABASE: prestashop
     restart: always
     networks: 
-       default: 
-         external: 
-           name: prestashop2_default 
+      - prestashop2_default 
     
   prestashop-git:
     image: ps_build
@@ -34,9 +32,7 @@ services:
     ports:
       - "8001:80"
     networks: 
-       default: 
-         external: 
-           name: prestashop2_default   
+      - prestashop2_default   
   
   tests:
      image: ps_test
@@ -50,7 +46,9 @@ services:
      volumes:
       - ./reports:/tests/reports
      networks: 
-       default: 
-         external: 
-           name: prestashop2_default  
+        - prestashop2_default  
          
+  networks:
+     prestashop2_default:
+         driver: "bridge"
+     
