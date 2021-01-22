@@ -25,3 +25,4 @@ RUN apt install -y nodejs
 COPY ["./tests/UI/.docker/prestashop/wait-for-it.sh", "./tests/UI/.docker/prestashop/docker_run.sh", "/tmp/"]
 
 COPY . /var/www/html
+EXPOSE 80
