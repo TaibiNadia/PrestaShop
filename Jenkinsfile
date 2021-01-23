@@ -8,12 +8,12 @@ pipeline {
                 sh 'SYMFONY_DEPRECATIONS_HELPER=disabled composer unit-tests'
             }
         }
-        stage(‘Build’) {
+        stage('Build') {
             steps { 
                 sh 'docker build -t ps_build .'
             }
         }
-        stage(‘Test_fonctionnel’) {
+        stage('Test_fonctionnel') {
             steps { 
                 
                 sh 'docker-compose up -d --force-recreate' // Start ENV 
@@ -23,7 +23,7 @@ pipeline {
         }
     }
         
-    post (‘Test_Results’) {
+    post ('Test_Results') {
             always {
                 echo 'I will always execute this!'
                 junit keepLongStdio: true, testResults: '/home/jenkins/workspace/prestashop2/test-reports/*.xml' 
