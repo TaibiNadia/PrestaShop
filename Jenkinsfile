@@ -1,6 +1,8 @@
 pipeline {
     agent { node { label 'ubuntu_slave' } }
-    
+    options {
+      timeout(time: 1, unit: 'HOURS') 
+    }
     stages {
         stage('Test_unitaire') {
             steps {
