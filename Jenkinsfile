@@ -20,7 +20,7 @@ pipeline {
             steps { 
                 
                 sh 'docker-compose up -d --force-recreate' // Start ENV 
-                sh 'tests/UI/.docker/prestashop/wait-for-it.sh --strict 10.10.20.71:8001 -- docker-compose up tests' // Wait and launch test
+                sh 'tests/UI/.docker/prestashop/wait-for-it.sh --timeout = 1200 --strict 10.10.20.71:8001 -- docker-compose up tests' // Wait and launch test
                 /*sh 'docker-compose stop && docker-compose rm --force' // Clean ENV */
             } 
         }
