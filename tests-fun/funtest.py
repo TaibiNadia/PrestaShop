@@ -21,15 +21,32 @@ class LoginTest(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.implicitly_wait(30)
         #self.driver.save_screenshot("toto.png")
-
-    def test_login_valid (self):
+        
+    def test_create_login (self):
         self.driver.get("http://10.10.20.71:8001/login?back=my-account")
-        self.driver.find_element_by_name("email").send_keys("mm@gmail.com")
-        self.driver.find_element_by_name("password").send_keys("MM@3841")
-        self.driver.find_element_by_id("submit-login").click()
-        self.assertNotIn("Authentication failed.", self.driver.page_source)
-        self.driver.find_element_by_class_name("logout").click()
+        self.driver.find_element_by_name("email").send_keys("bb@gmail.com")
+        self.driver.find_element_by_name("password").send_keys("BB@3841")
+        self.driver.find_element_by_partial_link_text("No account?").click()
+        self.driver.find_element_by_name("id_gender").send_keys("2")
+        self.driver.find_element_by_name("firstname").send_keys("test")
+        self.driver.find_element_by_name("lastname").send_keys("test")
+        self.driver.find_element_by_name("email").send_keys("bb@gmail.com")
+        self.driver.find_element_by_name("password").send_keys("BB@1234")
+        self.driver.find_element_by_name("optin").send_keys("1")
+        self.driver.find_element_by_name("newsletter").send_keys("1")
+        self.driver.find_element_by_name("psgdpr").send_keys("1")
+        self.assertIn("Create an account", self.driver.page_source)
+        self.driver.find_element_by_class_name("btn-primary").click()
         time.sleep(2)
+        
+    #def test_login_valid (self):
+    #    self.driver.get("http://10.10.20.71:8001/login?back=my-account")
+    #    self.driver.find_element_by_name("email").send_keys("mm@gmail.com")
+    #    self.driver.find_element_by_name("password").send_keys("MM@3841")
+    #    self.driver.find_element_by_id("submit-login").click()
+    #    self.assertNotIn("Authentication failed.", self.driver.page_source)
+    #    self.driver.find_element_by_class_name("logout").click()
+    #    time.sleep(2)
         
     def test_search_page (self):
         search_query = "mug"
