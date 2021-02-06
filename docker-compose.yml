@@ -44,7 +44,7 @@ services:
      command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.71:8001",  "--", "/usr/local/bin/python funtest.py"]
      tty: true
      volumes:
-      - ./reports:/tests/reports
+      - ./reports:/tests-fun/reports
      networks: 
         - prestashop2_default  
          
