@@ -29,7 +29,7 @@ pipeline {
     post ('Test_Results') {
             always {
                 echo 'I will always execute this!'
-                junit keepLongStdio: true, testResults: '/home/jenkins/workspace/prestashop2/reports/*.xml' 
+                junit keepLongStdio: true, testResults: 'reports/*.xml' 
               
             }    
     }  
