@@ -52,7 +52,8 @@ class LoginTest(unittest.TestCase):
         search_query = "mug"
         self.driver.get("http://10.10.20.76:8001/")
         self.driver.find_element_by_name("s").send_keys(search_query)
-        self.driver.find_element_by_class_name("material-icons").click()
+        #self.driver.find_element_by_class_name("material-icons").click()
+        self.driver.find_element_by_link_text("Search").click()
         self.driver.find_elements_by_id("js-product-list")
         results = self.driver.find_elements_by_class_name("product-miniature")
         self.assertTrue(results)
