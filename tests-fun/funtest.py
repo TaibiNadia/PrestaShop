@@ -23,7 +23,7 @@ class LoginTest(unittest.TestCase):
         #self.driver.save_screenshot("toto.png")
         
     def test_create_login (self):
-        self.driver.get("http://10.10.20.71:8001/login?back=my-account")
+        self.driver.get("http://10.10.20.76:8001/login?back=my-account")
         self.driver.find_element_by_name("email").send_keys("bb@gmail.com")
         self.driver.find_element_by_name("password").send_keys("BB@3841")
         self.driver.find_element_by_partial_link_text("No account?").click()
@@ -40,7 +40,7 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         
     #def test_login_valid (self):
-    #    self.driver.get("http://10.10.20.71:8001/login?back=my-account")
+    #    self.driver.get("http://10.10.20.76:8001/login?back=my-account")
     #    self.driver.find_element_by_name("email").send_keys("mm@gmail.com")
     #    self.driver.find_element_by_name("password").send_keys("MM@3841")
     #    self.driver.find_element_by_id("submit-login").click()
@@ -50,7 +50,7 @@ class LoginTest(unittest.TestCase):
         
     def test_search_page (self):
         search_query = "mug"
-        self.driver.get("http://10.10.20.71:8001/")
+        self.driver.get("http://10.10.20.76:8001/")
         self.driver.find_element_by_name("s").send_keys(search_query)
         self.driver.find_element_by_class_name("material-icons").click()
         self.driver.find_elements_by_id("js-product-list")
