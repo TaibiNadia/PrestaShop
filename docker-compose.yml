@@ -1,6 +1,8 @@
 version: '2'
 
-prestashop:
+services:
+
+  prestashop:
     image: ps_build
     ports:
       - 8002:80
