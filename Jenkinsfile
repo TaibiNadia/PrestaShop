@@ -14,9 +14,11 @@ pipeline {
             }
         }
         stage('Test_fonctionnel') {
-            sh 'docker-compose up -d --force-recreate' // Start ENV 
-            /*sh 'tests/UI/.docker/prestashop/wait-for-it.sh 10.10.20.71:8001 -s -t 1800 -- docker-compose up tests' */   // Wait and launch test
-            /*sh 'docker-compose stop && docker-compose rm --force' // Clean ENV */
+          steps {
+              sh 'docker-compose up -d --force-recreate' // Start ENV 
+              /*sh 'tests/UI/.docker/prestashop/wait-for-it.sh 10.10.20.71:8001 -s -t 1800 -- docker-compose up tests' */   // Wait and launch test
+              /*sh 'docker-compose stop && docker-compose rm --force' // Clean ENV */
+          }  
         }  
     }
         
