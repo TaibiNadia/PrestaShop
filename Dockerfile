@@ -28,7 +28,7 @@ RUN apt-get install -y nodejs npm
 
 RUN npm i npm@latest -g
 
-COPY --chown=www-data:www-data ./prestashop2/ /var/www/html/
+COPY --chown=www-data:www-data . /var/www/html/
 
 COPY --chown=www-data:www-data ./parameters.php /var/www/html/app/config/parameters.php
 COPY --chown=www-data:www-data ./.htaccess /var/www/html/.htaccess
