@@ -30,6 +30,10 @@ RUN npm i npm@latest -g
 
 COPY --chown=www-data:www-data . /var/www/html/
 
+# Pour installer prestashop
+COPY ["./tests/UI/.docker/prestashop/wait-for-it.sh", "./tests/UI/.docker/prestashop/docker_run.sh", "/tmp/"]
+#
+
 COPY --chown=www-data:www-data ./parameters.php /var/www/html/app/config/parameters.php
 COPY --chown=www-data:www-data ./.htaccess /var/www/html/.htaccess
 
