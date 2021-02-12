@@ -11,12 +11,12 @@ pipeline {
         
     }
         
-    post ('Test_Results') {
+    /*post ('Test_Results') {
             always {
                 echo 'I will always execute this!'
                 junit skipPublishingChecks: true, keepLongStdio: true, testResults: 'reports/*.xml' 
               
             }    
-    }  
+    }  */
        
 }
