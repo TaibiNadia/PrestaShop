@@ -1,38 +1,28 @@
-version: '2.1'
+version: '2'
 
-volumes:
-  db-data:
- 
-services:
-  mysql:
-    image: mysql:5
-    ports:
-      - "3306"
-    volumes:
-      - db-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: prestashop
-      MYSQL_DATABASE: prestashop
-    restart: always
-    networks: 
-      - prestashop2_default 
-    
-  prestashop-git:
+prestashop:
     image: ps_build
-    environment:
-      DISABLE_MAKE: ${DISABLE_MAKE:-0}
-      PS_INSTALL_AUTO: ${PS_INSTALL_AUTO:-1}
-      PS_DOMAIN: 10.10.20.76:8001
-      DB_PASSWD: ${DB_PASSWD:-prestashop}
-      DB_NAME: ${DB_NAME:-prestashop}
-      DB_SERVER: ${DB_SERVER:-mysql}
-      PS_FOLDER_INSTALL: ${PS_FOLDER_INSTALL:-install-dev}
-      PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN:-admin-dev}
-    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysql:3306", "--", "/tmp/docker_run.sh"]
     ports:
-      - "8001:80"
-    networks: 
-      - prestashop2_default   
+      - 8002:80
+    volumes:
+      - D:/workEnvir/franck/prestadata:/shared/
+    links:
+      - mysqldb
+    depends_on:
+      - mysqldb 
+    
+  mysqldb:
+    image: mysql:5.7.31
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: +QAY2wsx3edc
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashopuser
+      MYSQL_PASSWORD: +QAY2wsx3edc
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d  
   
   tests:
      image: ps_test
@@ -40,7 +30,7 @@ services:
       context: ./
       dockerfile: ./tests-fun/Dockerfile
      depends_on:
-      - "prestashop-git"
+      - "prestashop"
      command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.71:8001",  "--", "/usr/local/bin/python funtest.py"]
      tty: true
      volumes:
