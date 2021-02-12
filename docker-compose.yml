@@ -1,13 +1,15 @@
 version: '2'
 
+volumes:
+  prestadata:
+  
 services:
-
   prestashop:
     image: ps_build
     ports:
       - 8002:80
     volumes:
-      - D:/workEnvir/franck/prestadata:/shared/
+      - prestadata:/shared/
     links:
       - mysqldb
     depends_on:
