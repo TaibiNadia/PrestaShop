@@ -16,7 +16,7 @@ services:
       DB_SERVER: ${DB_SERVER:-mysql}
       PS_FOLDER_INSTALL: ${PS_FOLDER_INSTALL:-install-dev}
       PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN:-admin-dev}
-    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysql:3306", "--", "/tmp/docker_run.sh"]
+    command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysqldb:3306", "--", "/tmp/docker_run.sh"]
     
     ports:
       - 8002:80
