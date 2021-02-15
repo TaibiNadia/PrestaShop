@@ -22,7 +22,7 @@ services:
     volumes:
       - prestadata:/shared/
     links:
-      - mysqldb
+      - mysql
     depends_on:
       - mysql 
     
