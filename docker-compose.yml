@@ -24,7 +24,7 @@ services:
     links:
       - mysqldb
     depends_on:
-      - mysqldb 
+      - mysql 
     
   mysql:
     image: mysql:5.7.31
