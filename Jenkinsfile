@@ -13,6 +13,11 @@ pipeline {
                 sh 'docker build -t ps_build .'
             }
         }
+        stage('services') {
+            steps { 
+                sh 'docker-compose up'
+            }
+        }
        
     }
         
