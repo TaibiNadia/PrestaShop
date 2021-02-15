@@ -1,7 +1,8 @@
 version: '2'
 
 volumes:
-  prestadata:
+  presta-data:
+  db-data:
   
 services:
   prestashop:
@@ -20,13 +21,13 @@ services:
     ports:
       - 8002:80
     volumes:
-      - prestadata:/shared/
+      - presta-data:/shared/
     links:
-      - mysql
+      - mysqldb
     depends_on:
-      - mysql 
+      - mysqldb 
     
-  mysql:
+  mysqldb:
     image: mysql:5.7.31
     command: --default-authentication-plugin=mysql_native_password
     ports:
