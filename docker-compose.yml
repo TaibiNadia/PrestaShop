@@ -26,18 +26,17 @@ services:
     depends_on:
       - mysqldb 
     
-  mysqldb:
+  mysql:
     image: mysql:5.7.31
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3308:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: +QAY2wsx3edc
-      MYSQL_DATABASE: prestashop
-      MYSQL_USER: prestashopuser
-      MYSQL_PASSWORD: +QAY2wsx3edc
     volumes:
-      - ./dump:/docker-entrypoint-initdb.d  
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: prestashop
+      MYSQL_DATABASE: prestashop
+    restart: always  
   
   tests:
      image: ps_test
@@ -46,7 +45,7 @@ services:
       dockerfile: ./tests-fun/Dockerfile
      depends_on:
       - "prestashop"
-     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.71:8001",  "--", "/usr/local/bin/python funtest.py"]
+     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.76:8001",  "--", "/usr/local/bin/python funtest.py"]
      tty: true
      volumes:
       - ./reports:/tests-fun/reports
