@@ -27,16 +27,16 @@ services:
     volumes:
       - ./dump:/docker-entrypoint-initdb.d
   
-  tests:
-     image: ps_test
-     build:
-      context: ./
-      dockerfile: ./tests-fun/Dockerfile
-     depends_on:
-      - "prestashop"
-     command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.76:8001",  "--", "/usr/local/bin/python funtest.py"]
-     tty: true
-     volumes:
-      - ./reports:/tests-fun/reports
+  #tests:
+  #   image: ps_test
+  #   build:
+  #    context: ./
+  #    dockerfile: ./tests-fun/Dockerfile
+  #   depends_on:
+  #    - "prestashop"
+  #   command: ["/tmp/wait-for-it.sh", "--timeout=1800", "--strict", "10.10.20.76:8001",  "--", "/usr/local/bin/python funtest.py"]
+  #   tty: true
+  #   volumes:
+  #    - ./reports:/tests-fun/reports*/
      
      
