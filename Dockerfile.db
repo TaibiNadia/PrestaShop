@@ -1,6 +1,7 @@
 From mysql:5.7.31
 
-command: --default-authentication-plugin=mysql_native_password
+command: mysqld --default-authentication-plugin=mysql_native_password
+restart: always
 ports:
    - 3308:3306
 environment:
