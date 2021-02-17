@@ -14,7 +14,7 @@ pipeline {
                 sh 'docker build -f Dockerfile.db -t mysqldb .' 
             }
         }
-        stage('Launch services') {
+        stage('Services') {
             steps { 
                 sh 'docker-compose up'
             }
