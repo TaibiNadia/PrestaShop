@@ -8,7 +8,7 @@ pipeline {
                 sh 'SYMFONY_DEPRECATIONS_HELPER=disabled composer unit-tests'
             }
         }
-        stage('Build') {
+        /*stage('Build') {
             steps { 
                 sh 'docker build -t ps_build .'
             }
@@ -17,7 +17,7 @@ pipeline {
             steps { 
                 sh 'docker-compose up'
             }
-        }
+        }*/
        
     }
         
