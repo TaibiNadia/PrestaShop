@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps { 
                 sh 'docker build -f Dockerfile.ps -t prestashop .'
+                sh 'docker build -f Dockerfile.db -t mysqldb .' 
             }
         }
         /*stage('services') {
