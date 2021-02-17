@@ -1,4 +1,5 @@
-From:mysql:5.7.31
+From mysql:5.7.31
+
 command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3308:3306
