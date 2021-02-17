@@ -1,14 +1,10 @@
-From mysql:5.7.31
+FROM mysql:5.7.31
 
-command: mysqld --default-authentication-plugin=mysql_native_password
-restart: always
-ports:
-   - 3308:3306
-environment:
-   MYSQL_ROOT_PASSWORD: +QAY2wsx3edc
-   MYSQL_DATABASE: prestashop
-   MYSQL_USER: prestashopuser
-   MYSQL_PASSWORD: +QAY2wsx3edc
-volumes:
-   - ./dump.sql:/docker-entrypoint-initdb.d/datadump.sql
-CMD tail -f /dev/null
+ADD dump.sql /tmp/dump.sql
+
+RUN /bin/bash -c "/usr/bin/mysqld_safe --skip-grant-tables &" && \
+  sleep 5 && \
+  mysql -u root -e "CREATE DATABASE prestashop" && \
+  mysql -u root prestashop < tmp/dump.sql
+
+CMD ["tail -f /dev/null"]
