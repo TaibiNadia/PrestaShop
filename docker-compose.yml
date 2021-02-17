@@ -1,22 +1,23 @@
 version: '2'
 
 volume:
-  D:/workEnvir/franck/prestadata: 
+  presta-data:
+  my-db:
 services: 
   prestashop:
-    image: ps_build
+    image: prestashop
     ports:
       - 8002:80
     volumes:
-      - D:/workEnvir/franck/prestadata:/shared/
+      - presta-data:/var/www/html/
     links:
       - mysqldb
     depends_on:
       - mysqldb
 
   mysqldb:
-    image: mysql:5.7.31
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysqldb
+    restart: always
     ports:
       - 3308:3306
     environment:
@@ -25,7 +26,7 @@ services:
       MYSQL_USER: prestashopuser
       MYSQL_PASSWORD: +QAY2wsx3edc
     volumes:
-      - ./dump:/docker-entrypoint-initdb.d
+      - my-db:/var/lib/mysql
   
   #tests:
   #   image: ps_test
