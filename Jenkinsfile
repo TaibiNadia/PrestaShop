@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps { 
-                sh 'docker build -t ps_build .'
+                sh 'docker build -f Dockerfile.ps -t prestashop .'
             }
         }
         /*stage('services') {
