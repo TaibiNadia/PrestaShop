@@ -7,4 +7,4 @@ RUN /bin/bash -c "/usr/bin/mysqld_safe --skip-grant-tables &" && \
   mysql -u root -e "CREATE DATABASE prestashop" && \
   mysql -u root prestashop < tmp/dump.sql
 
-CMD ["tail -f /dev/null"]
+CMD ["mysqld"]
