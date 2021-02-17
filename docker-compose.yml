@@ -1,6 +1,6 @@
 version: '2'
 
-volume:
+volumes:
   presta-data:
   my-db:
 services: 
