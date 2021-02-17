@@ -14,11 +14,11 @@ pipeline {
                 sh 'docker build -f Dockerfile.db -t mysqldb .' 
             }
         }
-        /*stage('services') {
+        stage('Launch services') {
             steps { 
                 sh 'docker-compose up'
             }
-        }*/
+        }
        
     }
         
