@@ -10,7 +10,7 @@ services:
     ports:
       - 8002:80
     volumes:
-      - ./presta-data:/var/www/html/
+      - ./:/var/www/html/
     links:
       - mysqldb
     depends_on:
