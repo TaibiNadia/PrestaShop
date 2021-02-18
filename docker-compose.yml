@@ -20,7 +20,11 @@ services:
     restart: always
     ports:
       - 3308:3306
-    
+    environment:
+      MYSQL_ROOT_PASSWORD: +QAY2wsx3edc
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashopuser
+      MYSQL_PASSWORD: +QAY2wsx3edc
     volumes:
       - my-db:/var/lib/mysql
   
