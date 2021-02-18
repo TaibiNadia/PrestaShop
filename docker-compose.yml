@@ -2,7 +2,8 @@ version: '2'
 
 volumes:
   presta-data:
-  my-db:
+  db_data:
+  
 services: 
   prestashop:
     image: prestashop
@@ -16,7 +17,7 @@ services:
       - mysqldb
 
   mysqldb:
-    image: mysqldb
+    image: mysql:5.7.31
     restart: always
     ports:
       - 3308:3306
@@ -26,7 +27,8 @@ services:
       MYSQL_USER: prestashopuser
       MYSQL_PASSWORD: +QAY2wsx3edc
     volumes:
-      - my-db:/var/lib/mysql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - db_data:/var/lib/mysql
   
   #tests:
   #   image: ps_test
