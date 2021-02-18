@@ -10,7 +10,7 @@ services:
     ports:
       - 8002:80
     volumes:
-      - presta-data:/var/www/html/
+      - ./presta-data:/var/www/html/
     links:
       - mysqldb
     depends_on:
@@ -28,7 +28,7 @@ services:
       MYSQL_PASSWORD: +QAY2wsx3edc
     volumes:
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
   
   #tests:
   #   image: ps_test
