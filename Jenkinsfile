@@ -20,6 +20,11 @@ pipeline {
             }
         }
        
+        stage('Tests_fonctionnels') {
+            steps { 
+                sh 'python fun-test\funtest.py'
+            }
+        }
     }
         
     /*post ('Test_Results') {
